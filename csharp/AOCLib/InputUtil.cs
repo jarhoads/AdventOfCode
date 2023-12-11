@@ -3,75 +3,20 @@ public class InputUtil
 {
     public static List<string> ReadTextInput(string textFile)
     {
-        //if (File.Exists(textFile))
-        //{
-        //    // Read entire text file content in one string
-        //    string text = File.ReadAllText(textFile);
-        //    Console.WriteLine(text);
-        //}
-
         if (File.Exists(textFile))
         {
-            // Read a text file line by line.
+            // This seems to work fine for what we are doing.
             string[] lines = File.ReadAllLines(textFile);
             return lines.Select(x => x.Trim()).ToList();
-            //foreach (string line in lines)
-            //    Console.WriteLine(line);
         }
 
         return [];
-
-        //if (File.Exists(textFile))
-        //{
-        //    // Read file using StreamReader. Reads file line by line
-        //    using (StreamReader file = new StreamReader(textFile))
-        //    {
-        //        int counter = 0;
-        //        string ln;
-
-        //        while ((ln = file.ReadLine()) != null)
-        //        {
-        //            Console.WriteLine(ln);
-        //            counter++;
-        //        }
-        //        file.Close();
-        //        Console.WriteLine($ "File has {counter} lines.");
-        //    }
-        //}
-
-        //Console.ReadKey();
     }
-
-    //public static List<string> ReadTextInputStream(string textFile)
-    //{
-    //    var lines = new List<string>();
-    //    if (File.Exists(textFile))
-    //    {
-    //        // Read file using StreamReader. Reads file line by line
-    //        using (StreamReader file = new(textFile))
-    //        {
-    //            int counter = 0;
-    //            string ln;
-
-    //            while ((ln = file.ReadLine()) != null)
-    //            {
-    //                Console.WriteLine(ln);
-    //                lines.Add(ln);
-    //                counter++;
-    //            }
-    //            file.Close();
-    //            Console.WriteLine($"File has {counter} lines.");
-    //        }
-    //    }
-
-    //    return lines;
-    //}
 
     public static int ConvertToCalibration(string value)
     {
         Console.WriteLine($"value: {value}");
         value = value.Trim();
-        //var numbers = value.Split("").Where(c => IsDigit(c));
         var numbers = value.Where(c => Char.IsDigit(c));
         Console.WriteLine($"numbers - count: {numbers.Count()}");
         foreach (var item in numbers)
@@ -84,15 +29,11 @@ public class InputUtil
         if (numsList.Count == 1 ) 
         {
             calibration = ToDigit($"{numsList[0]}{numsList[0]}"); 
-            //sum = numbers.Select(n => ToDigit($"{n}")).Sum();
         }
         else
         {
             
             calibration = ToDigit($"{numsList[0]}{numsList[numsList.Count - 1]}");
-            //var num2 = ToDigit($"{numsList[numsList.Count - 1]}");
-            //sum = num1 + num2;
-            //Console.WriteLine($"num1: {num1} num2: {num2} sum: {sum}");
             Console.WriteLine($"calibration: {calibration}");
         }
 
@@ -192,7 +133,6 @@ public class InputUtil
             {
                 Console.WriteLine($"!!##--> selection: {selection}");
                 if (selection.Contains("red")) { rgb[0] = ToDigit(selection.Split(" ")[1]); }
-                //if (selection.Contains("red")) { rgb[0] = ConvertSelection(selection); }
                 else if (selection.Contains("green")) { rgb[1] = ToDigit(selection.Split(" ")[1]); }
                 else if (selection.Contains("blue")) { rgb[2] = ToDigit(selection.Split(" ")[1]); }
             }
@@ -260,7 +200,5 @@ public class InputUtil
         }
 
         return -1;
-
     }
-
 }
