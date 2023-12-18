@@ -201,4 +201,6 @@ public class InputUtil
 
         return -1;
     }
+
+    public static string DisplayList<T>(List<T> list) => String.Join(",", list);
 }
